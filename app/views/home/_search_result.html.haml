@@ -1,0 +1,6 @@
+%h1 SEARCH RESULT
+%p= "Result number: #{@result}"
+%br
+-@users.each do |user|
+  -unless user.id.length > 25
+    = button_to user.login, "/profile", method: :post, remote: true , params: { name: user.login }

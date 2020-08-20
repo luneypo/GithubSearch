@@ -1,9 +1,32 @@
 %h1= @login
-%p="Top3 langage use:"
--# -@language.each do |l|
--#   =l[0]
+%br
+="Top3 langage use:"
+-if @language.empty?
+  ="No info"
+-else
+  =@language
+%br
 %h2 Repos listes
--@repos.each do |repo|
-  = button_to repo['name'], "/repo", :remote => true , params: { name: @login ,repo: repo['name'] }
-  %div{id: "info_repo_#{repo['name']}"}
-  %br/
+%br
+="Repos Numbers : #{@total}"
+%br
+%table
+  %thead
+    %tr
+      %th name
+      %th language
+      %th contrib
+    %tbody
+    -@repos.each do |repo|
+      %tr
+        %td= repo.name
+        %td
+          -if controller.action_name.eql?'history'
+            = repo.language
+          -else
+            -repo.languages.nodes.each do |l|
+              =l.name
+        %td{id: "info_repo_#{repo.name}"}= button_to 'see', "/repo", :remote => true , params: { name: @login ,repo: repo.name }
+
+
+

@@ -1,0 +1,5 @@
+= 'History:'
+- @histories.each do |h|
+  =button_to h.login,  history_path ,method: :get, remote: true, params: { login: h.login }
+-if @histories.present?
+  =button_to 'delete history', delete_history_path, method: :get
