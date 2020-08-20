@@ -1,0 +1,9 @@
+%h1= @login
+%p="Top3 langage use:"
+-# -@language.each do |l|
+-#   =l[0]
+%h2 Repos listes
+-@repos.each do |repo|
+  = button_to repo['name'], "/repo", :remote => true , params: { name: @login ,repo: repo['name'] }
+  %div{id: "info_repo_#{repo['name']}"}
+  %br/
