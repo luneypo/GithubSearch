@@ -47,7 +47,4 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: GithubSearch_production
-  username: GithubSearch
-  password: <%= ENV['GITHUBSEARCH_DATABASE_PASSWORD'] %>
+    url: <%= ENV['DATABASE_URL'] %>
